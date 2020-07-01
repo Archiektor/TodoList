@@ -1,0 +1,92 @@
+$whitecolor: #ffffff;
+$yellowcolor: #7d8028;
+$darkredcolor: #7f2121;
+
+@mixin btn_hover {
+  &:hover {
+    background-image: none;
+    background-color: #9b1107;
+    transition: 1.5s all;}}
+
+@mixin btn_main {
+  border-radius: 5px;
+  background-color: $yellowcolor;
+  color: $whitecolor;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  @include btn_hover;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-flow: row nowrap;}
+
+
+@mixin flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin box($width, $height: $width){
+  width: $width;
+  height: $height;
+}
+
+@mixin font($font-weight: normal, $font-size: normal, $line-height: normal, $letter-spacing: normal) {
+  //font-size: $font-size * 1px;
+   font-size: $font-size * 0.1rem;
+
+  @if $font-weight==normal {
+    font-weight: 500;
+  } @else {
+    font-weight: 800;
+  }
+
+  @if $line-height==normal {
+    line-height: normal;
+  } @else {
+    line-height: $line-height / $font-size;
+  }
+
+  @if $letter-spacing==normal {
+    letter-spacing: normal;
+  } @else {
+    letter-spacing: #{$letter-spacing / $font-size}em;
+  }
+}
+
+@mixin cover-background {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+$tablet: 768;
+$large: 1024;
+$desktop: 1280;
+
+@mixin tablet {
+  @media only screen and (min-width: $tablet * 1px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media only screen and (min-width: $large * 1px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: $desktop * 1px) {
+    @content;
+  }
+}
+

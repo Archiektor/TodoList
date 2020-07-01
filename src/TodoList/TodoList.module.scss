@@ -1,0 +1,82 @@
+@import "../scss/varibles/variables";
+$violetcolor: #906dc6;
+
+.wrapper {
+  min-width: 300px;
+  position: relative;
+  border: 3px solid #5a0d0d;
+  display: flex;
+  flex-flow: nowrap column;
+  align-items: center;
+  padding: 10px;
+  &__title {
+    @include font(normal, 20.0);
+    font-family: "Century Gothic", sans-serif;
+    margin: 0;
+    padding-top: 15px;
+  }
+  &__list {
+    //border: 2px blue solid;
+    width: 98%;
+    list-style-type: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  &__listItem {
+    box-sizing: border-box;
+    box-shadow: 1px 1px 7px #2a0303;
+    margin: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__flag {
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+}
+
+.btn {
+  @include flex-center;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  padding: 3px 6px;
+  margin-left: 15px;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 6px black;
+  background-color: $darkredcolor;
+
+  &_deleteItem {
+    justify-self: right;
+    background-color: #711515;
+    width: 20px;
+    height: 20px;
+  }
+
+  &_deleteTodoList {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.btnBlock {
+  margin: 0 auto;
+  //border: 2px yellowgreen solid;
+  padding: 5px;
+
+  &_active {
+    background-color: $violetcolor;
+  }
+
+  button {
+    margin: 2px;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+}
+
+

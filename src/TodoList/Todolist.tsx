@@ -1,7 +1,10 @@
 import React, {ChangeEvent} from 'react';
-import {FilterValuesType} from './App';
-import AddItemForm from "./AddItemForm/AddItemForm";
-import EditableSpan from "./EditableSpan/EditableSpan";
+import {FilterValuesType} from '../App/App';
+import AddItemForm from "../AddItemForm/AddItemForm";
+import EditableSpan from "../EditableSpan/EditableSpan";
+
+import s from "./TodoList.module.scss";
+
 
 type PropsType = {
     id: string,
@@ -36,12 +39,12 @@ export function Todolist(props: PropsType) {
     }
 
 
-    return <div>
-        <h3><EditableSpan title={props.title} saveTitle={changeTodoListTitle}/>
-            <button onClick={deleteTodoList}>X</button>
+    return <div className={s.wrapper}>
+        <h3 className={s.wrapper__title}><EditableSpan title={props.title} saveTitle={changeTodoListTitle}/>
+            <button className={`${s.btn} ${s.btn_deleteTodoList}`} onClick={deleteTodoList}>X</button>
         </h3>
         <AddItemForm addItem={addTask}/>
-        <ul>
+        <ul className={s.wrapper__list}>
             {
                 props.tasks.map(t => {
                     const onClickHandler = () => props.removeTask(t.id, props.id)
@@ -51,27 +54,31 @@ export function Todolist(props: PropsType) {
                     const onTitleCallback = (title: string) => {
                         props.changeTaskTitle(t.id, title, props.id)
                     }
-
-                    return <li key={t.id} className={t.isDone ? "is-done" : ""}>
-                        <input type="checkbox"
-                               onChange={onChangeStatusHandler}
-                               checked={t.isDone}/>
-                        <EditableSpan saveTitle={onTitleCallback} title={t.title}/>
-                        <button onClick={onClickHandler}>x</button>
+                    let isDoneForStyle = t.isDone ? "is-done" : "";
+                    return <li className={`${s.wrapper__listItem} ${isDoneForStyle}`} key={t.id}>
+                        <div>
+                            <input className={s.wrapper__flag} type="checkbox"
+                                   onChange={onChangeStatusHandler}
+                                   checked={t.isDone}/>
+                            <EditableSpan saveTitle={onTitleCallback} title={t.title}/>
+                        </div>
+                        <button className={`${s.btn} ${s.btn_deleteItem}`} onClick={onClickHandler}>x</button>
                     </li>
                 })
             }
         </ul>
-        <div>
-            <button className={props.filter === 'all' ? "active-filter" : ""}
+        <div className={s.btnBlock}>
+            <button className={props.filter === 'all' ? `${s.btnBlock_active}` : ""}
                     onClick={onAllClickHandler}>All
             </button>
-            <button className={props.filter === 'active' ? "active-filter" : ""}
+            <button className={props.filter === 'active' ? `${s.btnBlock_active}` : ""}
                     onClick={onActiveClickHandler}>Active
             </button>
-            <button className={props.filter === 'completed' ? "active-filter" : ""}
+            <button className={props.filter === 'completed' ? `${s.btnBlock_active}` : ""}
                     onClick={onCompletedClickHandler}>Completed
             </button>
         </div>
     </div>
 }
+
+export default Todolist;

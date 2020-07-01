@@ -1,5 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 
+import s from "./AddItemForm.module.scss";
+
 type AddItemFormType = {
     addItem: (title: string) => void,
 }
@@ -29,15 +31,17 @@ const AddItemForm: React.FC<AddItemFormType> = ({addItem}) => {
         }
     }
 
+    let errorAddItemStyle = error ? `${s.wrapper__addItem_error}` : "";
     return (
-        <div>
-            <input value={title}
-                   onChange={onChangeHandlerItem}
-                   onKeyPress={onKeyPressHandlerItem}
-                   className={error ? "error" : ""}
-            />
-            <button onClick={onAddItemClick}>+</button>
-            {error && <div className="error-message">{error}</div>}
+        <div className={s.wrapper}>
+            <div className={s.wrapper__inputBlock}>
+                <input className={`${s.wrapper__addItem} ${errorAddItemStyle}`} value={title}
+                       onChange={onChangeHandlerItem}
+                       onKeyPress={onKeyPressHandlerItem}
+                />
+                {error && <div className={`${s.wrapper__errorDiv}`}>{error}</div>}
+            </div>
+            <button className={s.wrapper__btn} onClick={onAddItemClick}>+</button>
         </div>
     )
 }

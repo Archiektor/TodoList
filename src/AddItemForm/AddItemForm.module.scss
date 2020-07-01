@@ -1,0 +1,43 @@
+@import "../scss/varibles/variables";
+
+.wrapper {
+  box-sizing: border-box;
+  margin: 30px 10px;
+  display: flex;
+  flex-flow: nowrap row;
+  align-items: flex-start;
+  justify-content: space-around;
+  //border: 2px solid black;
+
+  &__inputBlock {
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  &__addItem {
+    margin-right: 10px;
+    height: 18px;
+
+    &_error {
+      background-color: #c76666;
+      outline: 2px $darkredcolor solid;
+    }
+  }
+
+  &__errorDiv {
+    color: $darkredcolor;
+  }
+
+  &__btn {
+    background-color: #84b865;
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: 25px;
+    height: 25px;
+    @include flex-center;
+  }
+}
+

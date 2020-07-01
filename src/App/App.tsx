@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import './App.css';
-import {TaskType, Todolist} from './Todolist';
+import {TaskType, Todolist} from "../TodoList/Todolist"
 import {v1} from 'uuid';
-import AddItemForm from "./AddItemForm/AddItemForm";
+import AddItemForm from "../AddItemForm/AddItemForm";
+
+import scss from "./App.module.scss";
 
 export type FilterValuesType = "all" | "active" | "completed";
 
@@ -44,7 +45,7 @@ function App() {
     });
 
     function removeTask(id: string, todoListId: string) {
-        let filteredTasks = tasks[todoListId].filter(t => t.id != id);
+        let filteredTasks = tasks[todoListId].filter(t => t.id !== id);
         tasks[todoListId] = filteredTasks;
         setTasks({...tasks});
     }
@@ -110,7 +111,7 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div className={scss.App}>
             <AddItemForm addItem={addTodoList}/>
             {
                 todoLists.map((tl) => {
