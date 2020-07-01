@@ -1,32 +1,13 @@
-@import "../scss/varibles/variables";
+@import '../scss/varibles/variables';
 
 .App {
-  padding: 30px;
   display: flex;
   flex-flow: row nowrap;
+
+  padding: 30px;
   background-color: #baaeae;
 }
 
- div {
-   margin-right: 30px;
- }
-
-/*.App > div {
-  margin-right: 50px;
+div {
+  margin-right: 30px;
 }
-
-.error {
-  border: red 2px solid;
-}
-
-.error-message {
-  color: red;
-}
-
-.active-filter {
-  background-color: #c69330;
-}
-
-.is-done {
-  opacity: 0.5;
-}*/

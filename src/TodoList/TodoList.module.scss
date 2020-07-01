@@ -1,59 +1,69 @@
-@import "../scss/varibles/variables";
+@import '../scss/varibles/variables';
+
 $violetcolor: #906dc6;
 
 .wrapper {
-  min-width: 300px;
   position: relative;
-  border: 3px solid #5a0d0d;
   display: flex;
-  flex-flow: nowrap column;
   align-items: center;
+  flex-flow: nowrap column;
+
+  min-width: 300px;
   padding: 10px;
+  border: 3px solid #5a0d0d;
+
   &__title {
-    @include font(normal, 20.0);
-    font-family: "Century Gothic", sans-serif;
+    font-family: 'Century Gothic', sans-serif;
     margin: 0;
     padding-top: 15px;
+
+    @include font(normal, 20.0);
   }
+
   &__list {
+    box-sizing: border-box;
     //border: 2px blue solid;
     width: 98%;
-    list-style-type: none;
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    list-style-type: none;
   }
+
   &__listItem {
-    box-sizing: border-box;
-    box-shadow: 1px 1px 7px #2a0303;
-    margin: 5px;
     display: flex;
-    flex-flow: row nowrap;
     align-items: center;
+    flex-flow: row nowrap;
     justify-content: space-between;
+
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow: 1px 1px 7px #2a0303;
   }
+
   &__flag {
-    margin-left: 5px;
     margin-right: 15px;
+    margin-left: 5px;
   }
 }
 
 .btn {
-  @include flex-center;
+  box-sizing: border-box;
   width: 30px;
   height: 30px;
-  border-radius: 5px;
-  padding: 3px 6px;
   margin-left: 15px;
-  box-sizing: border-box;
-  box-shadow: 2px 2px 6px black;
+  padding: 3px 6px;
+  border-radius: 5px;
   background-color: $darkredcolor;
+  box-shadow: 2px 2px 6px black;
+
+  @include flex-center;
 
   &_deleteItem {
-    justify-self: right;
-    background-color: #711515;
     width: 20px;
     height: 20px;
+    background-color: #711515;
+
+    justify-self: right;
   }
 
   &_deleteTodoList {
@@ -65,6 +75,7 @@ $violetcolor: #906dc6;
 
 .btnBlock {
   margin: 0 auto;
+
   //border: 2px yellowgreen solid;
   padding: 5px;
 
@@ -74,8 +85,8 @@ $violetcolor: #906dc6;
 
   button {
     margin: 2px;
-    border-radius: 5px;
     padding: 5px 10px;
+    border-radius: 5px;
   }
 }
 
