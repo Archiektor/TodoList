@@ -1,47 +1,43 @@
 $whitecolor: #ffffff;
 $yellowcolor: #7d8028;
 $darkredcolor: #7f2121;
+$font-weights: (
+        "thin" : 300,
+        "regular": 400,
+        "medium": 500,
+        "bold" : 700,
+        "bbold": 800,
+);
 
-@mixin btn_hover {
-  &:hover {
-    background-image: none;
-    background-color: #9b1107;
-    transition: 1.5s all;}}
-
-@mixin btn_main {
-  border-radius: 5px;
-  background-color: $yellowcolor;
-  color: $whitecolor;
-  font-size: 12px;
-  font-weight: 400;
-  text-transform: uppercase;
-  @include btn_hover;
+// isn't working why ?
+@mixin makeWH($width, $height){
+  width: $width;
+  height: $height;
 }
 
-@mixin flex-row {
-  display: flex;
-  flex-flow: row nowrap;}
-
-
-@mixin flex-column {
-  display: flex;
-  flex-flow: column nowrap;
+@function getWeight($weight-name) {
+  @return map_get($font-weights, $weight-name)
 }
 
-@mixin flex-center {
+@mixin flexDirection($direction) {
+  display: flex;
+  flex-flow: $direction nowrap;
+}
+
+@mixin flexCenter {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@mixin box($width, $height: $width){
+@mixin box($width, $height: $width) {
   width: $width;
   height: $height;
 }
 
 @mixin font($font-weight: normal, $font-size: normal, $line-height: normal, $letter-spacing: normal) {
   //font-size: $font-size * 1px;
-   font-size: $font-size * 0.1rem;
+  font-size: $font-size * 0.1rem;
 
   @if $font-weight==normal {
     font-weight: 500;
@@ -62,15 +58,28 @@ $darkredcolor: #7f2121;
   }
 }
 
-@mixin cover-background {
+@mixin coverBackground {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
+$mobile: 320;
 $tablet: 768;
 $large: 1024;
 $desktop: 1280;
+
+@mixin mobile {
+  @media only screen and (min-width: $mobile * 1px) {
+    @content;
+  }
+}
+
+/*@mixin mobile {
+  @media (max-width: $mobile) {
+    @content
+  }
+}*/
 
 @mixin tablet {
   @media only screen and (min-width: $tablet * 1px) {

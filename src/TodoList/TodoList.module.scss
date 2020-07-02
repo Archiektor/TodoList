@@ -1,23 +1,27 @@
 @import '../scss/varibles/variables';
+%text-shadow{
+  text-shadow: 2px 2px 6px #111111;
+}
+
 
 $violetcolor: #906dc6;
 
 .wrapper {
   position: relative;
-  display: flex;
+  @include flexDirection(column);
   align-items: center;
-  flex-flow: nowrap column;
 
   min-width: 300px;
   padding: 10px;
   border: 3px solid #5a0d0d;
+  background-color: #b4d992;
 
   &__title {
     font-family: 'Century Gothic', sans-serif;
-    margin: 0;
     padding-top: 15px;
+    @extend %text-shadow;
 
-    @include font(normal, 20.0);
+    @include font(getWeight("bold"), 20.0);
   }
 
   &__list {
@@ -30,14 +34,13 @@ $violetcolor: #906dc6;
   }
 
   &__listItem {
-    display: flex;
+    @include flexDirection(row);
     align-items: center;
-    flex-flow: row nowrap;
     justify-content: space-between;
 
-    box-sizing: border-box;
     margin: 5px;
     box-shadow: 1px 1px 7px #2a0303;
+    padding-bottom: 10px;
   }
 
   &__flag {
@@ -56,12 +59,13 @@ $violetcolor: #906dc6;
   background-color: $darkredcolor;
   box-shadow: 2px 2px 6px black;
 
-  @include flex-center;
+  @include flexCenter;
 
   &_deleteItem {
     width: 20px;
     height: 20px;
-    background-color: #711515;
+    background-color: #9c49ce;
+    margin-right: 10px;
 
     justify-self: right;
   }

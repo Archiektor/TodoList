@@ -1,9 +1,7 @@
 @import '../scss/varibles/variables';
 
 .App {
-  display: flex;
-  flex-flow: row nowrap;
-
+  @include flexDirection(row);
   padding: 30px;
   background-color: #baaeae;
 }
