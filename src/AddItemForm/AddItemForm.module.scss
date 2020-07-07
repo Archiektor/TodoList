@@ -1,22 +1,25 @@
 @import '../scss/varibles/variables';
 
 .wrapper {
-  @include flexDirection(row);
   align-items: flex-start;
   justify-content: space-around;
 
   margin: 10px 30px;
+
+  @include flexDirection(row);
   //border: 2px solid black;
 
   &__inputBlock {
-    @include flexDirection(column);
     align-items: center;
+
     margin-right: 10px;
+
+    @include flexDirection(column);
   }
 
   &__addItem {
-    margin-right: 10px;
     height: 25px;
+    margin-right: 10px;
 
     &_error {
       outline: 2px $darkredcolor solid;
@@ -32,8 +35,10 @@
     width: 25px;
     height: 25px;
     padding: 10px 15px;
+
     border-radius: 5px;
     background-color: #71b349;
+
     @include flexCenter;
   }
 }

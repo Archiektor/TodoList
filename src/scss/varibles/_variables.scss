@@ -9,7 +9,7 @@ $font-weights: (
         "bbold": 800,
 );
 
-// isn't working why ?
+
 @mixin makeWH($width, $height){
   width: $width;
   height: $height;
