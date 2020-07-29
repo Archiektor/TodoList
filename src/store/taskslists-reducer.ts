@@ -1,4 +1,4 @@
-import {FilterValuesType, TasksStateType, TodoListType} from '../App/App';
+import {TasksStateType} from '../App/App';
 import {v1} from 'uuid';
 import {AddTodolistACType, RemoveTodolistACType} from './todolists-reducer';
 
@@ -8,8 +8,6 @@ enum Actions {
     CHANGE_TASK_STATUS = 'CHANGE_TASK_STATUS',
     CHANGE_TASK_TITLE = 'CHANGE_TASK_TITLE',
 }
-
-type StateType = TasksStateType;
 
 type RemoveTaskACType = { type: typeof Actions.REMOVE_TASK, taskId: string, todolistId: string }
 export type AddTaskACType = { type: typeof Actions.ADD_TASK, title: string, todolistId: string }
@@ -32,7 +30,6 @@ export const changeTaskStatusAC = (taskId: string, isDone: boolean, todolistId: 
     isDone,
     todolistId
 })
-
 export const changeTaskTitleAC = (taskId: string, title: string, todolistId: string): ChangeTaskTitleACType => ({
     type: Actions.CHANGE_TASK_TITLE,
     taskId,
@@ -47,7 +44,11 @@ type ReducersActionsType =
     | ChangeTaskTitleACType
     | AddTodolistACType | RemoveTodolistACType;
 
-export const taskslistsReducer = (partOfState: StateType, action: ReducersActionsType): StateType => {
+
+type StateType = TasksStateType;
+let initialState: TasksStateType = {}
+
+export const taskslistsReducer = (partOfState: StateType = initialState, action: ReducersActionsType): StateType => {
     switch (action.type) {
         case Actions.REMOVE_TASK: {
             let copyState = {...partOfState};
@@ -93,7 +94,7 @@ export const taskslistsReducer = (partOfState: StateType, action: ReducersAction
             return partOfState;
         }
         default:
-            throw new Error('I don\'t understand this type')
+            return partOfState;
     }
 
 

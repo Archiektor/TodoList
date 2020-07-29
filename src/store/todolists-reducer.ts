@@ -7,8 +7,6 @@ const ADD_TODOLIST = "ADD_TODOLIST";
 const CHANGE_TODOLIST_TITLE = "CHANGE_TODOLIST_TITLE";
 const CHANGE_TODOLIST_FILTER = "CHANGE_TODOLIST_FILTER";
 
-type StateType = Array<TodoListType>
-
 export type RemoveTodolistACType = {
     type: typeof REMOVE_TODOLIST,
     listId: string
@@ -49,7 +47,10 @@ type ReducersActionsType =
     | ChangeTodolistFilterACType
     | AddTaskACType;
 
-export const todolistsReducer = (partOfState: StateType, action: ReducersActionsType): StateType => {
+type StateType = Array<TodoListType>
+let initialState: StateType = [];
+
+export const todolistsReducer = (partOfState: StateType = initialState, action: ReducersActionsType): StateType => {
     switch (action.type) {
         // come array of lists
         case "REMOVE_TODOLIST": {
@@ -78,7 +79,7 @@ export const todolistsReducer = (partOfState: StateType, action: ReducersActions
         }
 
         default:
-            throw new Error("I don't understand this type")
+            return partOfState
     }
 }
 
