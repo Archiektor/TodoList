@@ -8,18 +8,19 @@ type AddItemFormType = {
     addItem: (title: string) => void,
 }
 
-const AddItemForm: React.FC<AddItemFormType> = ({addItem}) => {
-    let [title, setTitle] = useState("");
+const AddItemForm: React.FC<AddItemFormType> = React.memo(({addItem}) => {
+    console.log('add item form');
+    let [title, setTitle] = useState('');
     let [error, setError] = useState<string | null>(null);
 
 
     const onAddItemClick = () => {
-        if (title.trim() !== "") {
+        if (title.trim() !== '') {
             addItem(title.trim());
         } else {
-            setError("Title is required");
+            setError('Title is required');
         }
-        setTitle("");
+        setTitle('');
     }
 
     const onChangeHandlerItem = (e: ChangeEvent<HTMLInputElement>) => {
@@ -27,33 +28,35 @@ const AddItemForm: React.FC<AddItemFormType> = ({addItem}) => {
     }
 
     const onKeyPressHandlerItem = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null);
+        if (error) {
+            setError(null);
+        }
         if (e.charCode === 13) {
             onAddItemClick();
         }
     }
 
-    let errorAddItemStyle = error ? `${s.wrapper__addItem_error}` : "";
+    let errorAddItemStyle = error ? `${s.wrapper__addItem_error}` : '';
     return (
         <div className={s.wrapper}>
             <div onBlur={() => setError(null)} className={s.wrapper__inputBlock}>
                 {/*<TextField variant={"standard"} className={`${s.wrapper__addItem} ${errorAddItemStyle}`} value={title}*/}
-                <TextField variant={"standard"} value={title}
+                <TextField variant={'standard'} value={title}
                            onChange={onChangeHandlerItem}
                            onKeyPress={onKeyPressHandlerItem}
                            error={Boolean(errorAddItemStyle)}
-                           label={"Title"}
+                           label={'Title'}
                            helperText={error}
                 />
                 {/*{error && <div className={`${s.wrapper__errorDiv}`}>{error}</div>}*/}
             </div>
             {/*<button className={s.wrapper__btn} onClick={onAddItemClick}>+</button>*/}
-            <IconButton onClick={onAddItemClick} color={"primary"}>
+            <IconButton onClick={onAddItemClick} color={'primary'}>
                 <AddBox/>
             </IconButton>
             {/*<Button variant={"contained"} color={"primary"} onClick={onAddItemClick}>+</Button>*/}
         </div>
     )
-}
+})
 
 export default AddItemForm;

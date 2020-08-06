@@ -151,7 +151,7 @@ function App() {
                                         tasks={tasksForTodolist}
                                         removeTask={removeTask}
                                         changeFilter={changeFilter}
-                                        addTask={addTask}
+                                        addTaskFromProps={addTask}
                                         changeTaskStatus={changeStatus}
                                         filter={tl.filter}
                                         removeTodoList={removeTodoList}
