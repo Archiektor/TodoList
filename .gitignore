@@ -25,3 +25,4 @@ yarn-error.log*
 !/tsconfig.json
 !/src/react-app-env.d.ts
 
+/integration/__image_snapshots__/

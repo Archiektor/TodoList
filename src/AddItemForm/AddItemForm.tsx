@@ -9,7 +9,6 @@ type AddItemFormType = {
 }
 
 const AddItemForm: React.FC<AddItemFormType> = React.memo(({addItem}) => {
-    console.log('add item form');
     let [title, setTitle] = useState('');
     let [error, setError] = useState<string | null>(null);
 
@@ -50,11 +49,9 @@ const AddItemForm: React.FC<AddItemFormType> = React.memo(({addItem}) => {
                 />
                 {/*{error && <div className={`${s.wrapper__errorDiv}`}>{error}</div>}*/}
             </div>
-            {/*<button className={s.wrapper__btn} onClick={onAddItemClick}>+</button>*/}
             <IconButton onClick={onAddItemClick} color={'primary'}>
                 <AddBox/>
             </IconButton>
-            {/*<Button variant={"contained"} color={"primary"} onClick={onAddItemClick}>+</Button>*/}
         </div>
     )
 })
